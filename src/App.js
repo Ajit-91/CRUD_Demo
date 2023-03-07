@@ -1,24 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Buckets from './pages/Buckets';
+import History from './pages/History';
+import AllCards from './pages/AllCards';
+import { Container } from '@mui/material';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Container maxWidth='xl' sx={({ palette: { custom } }) => ({
+        backgroundColor: custom.background.main,
+        flexGrow: 1,
+        py: 5,
+      })}>
+        <Container sx={{ width: '100%', height: 'fit-content' }}>
+          <Navbar />
+          <Routes>
+            <Route path="/buckets" element={<Buckets />} />
+            <Route path="/buckets/:id" element={<AllCards />} />
+            <Route path="/history" element={<History />} />
+            <Route path='*' element={<Navigate to={'/buckets'} />} />
+          </Routes>
+        </Container>
+      </Container>
+    </>
   );
 }
 
