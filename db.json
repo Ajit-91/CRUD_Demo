@@ -29,60 +29,60 @@
     {
       "id": 1,
       "name": "card1",
-      "bucket": "bucket1",
+      "bucketId": "1",
       "link": "https://www.youtube.com/watch?v=QH2-TGUlwu4"
     },
     {
       "id": 2,
       "name": "card2",
-      "bucket": "bucket2",
+      "bucketId": "2",
       "link": "https://www.youtube.com/watch?v=QH2-TGUlwu4"
     },
     {
       "id": 3,
       "name": "card3",
-      "bucket": "bucket3",
+      "bucketId": "3",
       "link": "https://www.youtube.com/watch?v=QH2-TGUlwu4"
     },
     {
       "id": 4,
       "name": "card4",
-      "bucket": "bucket4",
+      "bucketId": "4",
       "link": "https://www.youtube.com/watch?v=QH2-TGUlwu4"
     },
     {
       "id": 5,
       "name": "card5",
-      "bucket": "bucket1",
+      "bucketId": "1",
       "link": "https://www.youtube.com/watch?v=QH2-TGUlwu4"
     },
     {
       "id": 6,
       "name": "card6",
-      "bucket": "bucket2",
+      "bucketId": "2",
       "link": "https://www.youtube.com/watch?v=QH2-TGUlwu4"
     },
     {
       "id": 7,
       "name": "card7",
-      "bucket": "bucket3",
+      "bucketId": "3",
       "link": "https://www.youtube.com/watch?v=QH2-TGUlwu4"
     },
     {
       "id": 8,
       "name": "card8",
-      "bucket": "bucket4",
+      "bucketId": "4",
       "link": "https://www.youtube.com/watch?v=QH2-TGUlwu4"
     },
     {
       "name": "card9",
-      "bucket": "bucket2",
+      "bucketId": "2",
       "link": "https://www.youtube.com/watch?v=QH2-TGUlwu4",
       "id": 9
     },
     {
       "name": "card10",
-      "bucket": "bucket3",
+      "bucketId": "3",
       "link": "https://www.youtube.com/watch?v=QH2-TGUlwu4",
       "id": 10
     }

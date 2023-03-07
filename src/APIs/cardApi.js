@@ -1,7 +1,8 @@
 import { fetchThunkApi } from "../utils/fetchApi";
 
-export const getAllCards = async (_, {rejectWithValue}) => {
-    const route = process.env.REACT_APP_BASE_URL + "/cards";
+export const getAllCards = async (id, {rejectWithValue}) => {
+    const route = `${process.env.REACT_APP_BASE_URL}/cards?bucketId=${id}`;
+    console.log({route})
     const options = {
         method: "GET",
     };

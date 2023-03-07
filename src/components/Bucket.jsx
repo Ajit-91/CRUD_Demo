@@ -1,8 +1,11 @@
 import { Box, Checkbox, Divider, IconButton, Paper, Typography } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit';
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Bucket = ({ name, id }) => {
+    const navigate = useNavigate()
+
     return (
         <>
             <Paper elevation={3}>
@@ -17,7 +20,9 @@ const Bucket = ({ name, id }) => {
                     </IconButton>
                 </Box>
 
-                <Box sx={{display : 'flex', justifyContent : 'center', alignItems : 'center', py : 4}}>
+                <Box sx={{display : 'flex', justifyContent : 'center', alignItems : 'center', py : 4}}
+                    onClick={() => navigate(`/buckets/${id}`)}
+                >
                     <Typography align='center' variant="h5">{name?.toUpperCase()}</Typography>
                 </Box>
             </Paper>
