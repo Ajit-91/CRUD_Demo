@@ -22,16 +22,13 @@ export const fetchApi = async (route, options) => {
     try {
         const res = await fetch(route, options)
         const result = await res.json()
-        if(res.status===200){
+        if(res.ok){
             return result;
         }else{
-            console.log("api",result);
-            alert(result?.message || "something went wrong")
-            return result
+            throw new Error(result?.message || "something went wrong")
         }
     } catch (err) {
         console.log("error",err)
         alert(err.message || "something went wrong")
-        // return err
     }
 }
