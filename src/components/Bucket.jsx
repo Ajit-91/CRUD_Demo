@@ -2,10 +2,17 @@ import { Box, Checkbox, Divider, IconButton, Paper, Typography } from '@mui/mate
 import EditIcon from '@mui/icons-material/Edit';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCurrentBucket } from '../redux/slices/bucketSlice';
 
-const Bucket = ({ name, id }) => {
+const Bucket = ({ name, id, setEdit }) => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
+    const handleEdit = () => {
+        setEdit(true)
+        dispatch(setCurrentBucket({id, name}))
+    }
     return (
         <>
             <Paper elevation={3}>
@@ -15,7 +22,7 @@ const Bucket = ({ name, id }) => {
                     alignItems: 'center'
                 }} >
                     <Checkbox />
-                    <IconButton>
+                    <IconButton onClick={handleEdit}>
                         <EditIcon />
                     </IconButton>
                 </Box>

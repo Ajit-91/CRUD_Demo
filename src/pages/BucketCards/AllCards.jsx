@@ -2,8 +2,8 @@ import { Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import DataCard from '../components/DataCard';
-import { getAllCards } from '../redux/slices/cardSlice'
+import DataCard from '../../components/DataCard';
+import { getAllCards } from '../../redux/slices/cardSlice'
 
 const AllCards = () => {
 

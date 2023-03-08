@@ -7,13 +7,18 @@ export const updateBucket = createAsyncThunk("buckets/getAllBuckets", bucketApi.
 export const deleteBucket = createAsyncThunk("buckets/getAllBuckets", bucketApi.deleteBucket)
 
 const initialState = {
-    bucketsData : null
+    bucketsData : null,
+    currentBucket : null
 }
 
 const bucketSlice = createSlice({
   name: "buckets",
   initialState,
-  reducers: {},
+  reducers: {
+        setCurrentBucket: (state, {payload}) => {
+            state.currentBucket = payload;
+        }
+  },
     extraReducers: {
         // getAllBuckets
         [getAllBuckets.fulfilled]: (state, {payload}) => {
@@ -21,12 +26,12 @@ const bucketSlice = createSlice({
         },
 
         [getAllBuckets.rejected]: (_, {payload}) => {
-            console.log("rejected",payload);
+            console.log("getAllBuckets.rejected : ",payload);
         },
         
         // createBucket
         [createBucket.fulfilled]: (state, {payload}) => {
-            state.bucketsData = payload;
+            state.bucketsData = {...payload, ...state.bucketsData};
         },
 
         [createBucket.rejected]: (_, {payload}) => {
@@ -35,7 +40,7 @@ const bucketSlice = createSlice({
 
         // updateBucket
         [updateBucket.fulfilled]: (state, {payload}) => {
-            state.bucketsData = payload;
+            state.bucketsData = {...state.bucketsData, ...payload};
         },
 
         [updateBucket.rejected]: (_, {payload}) => {
@@ -53,6 +58,7 @@ const bucketSlice = createSlice({
     }
 });
 
-export const {} = bucketSlice.actions
+export const {setCurrentBucket} = bucketSlice.actions
 export const selectBuckets = state => state.buckets.bucketsData
+export const selectCurrentBucket = state => state.buckets.currentBucket
 export default bucketSlice.reducer

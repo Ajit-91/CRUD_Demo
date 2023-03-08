@@ -7,13 +7,18 @@ export const updateCard = createAsyncThunk("cards/getAllCards", cardApi.updateCa
 export const deleteCard = createAsyncThunk("cards/getAllCards", cardApi.deleteCard)
 
 const initialState = {
-    cardsData : null
+    cardsData : null,
+    currentCard : null
 }
 
 const cardSlice = createSlice({
   name: "cards",
   initialState,
-  reducers: {},
+  reducers: {
+        setCurrentCard: (state, {payload}) => {
+            state.currentCard = payload;
+        }
+  },
     extraReducers: {
         // getAllCards
         [getAllCards.fulfilled]: (state, {payload}) => {
@@ -25,7 +30,7 @@ const cardSlice = createSlice({
 
         // createCard
         [createCard.fulfilled]: (state, {payload}) => {
-            state.cardsData = payload;
+            state.cardsData = {...state.cardsData, ...payload};
         },
         [createCard.rejected]: (_, {payload}) => {
             console.log("rejected",payload);
@@ -50,6 +55,7 @@ const cardSlice = createSlice({
     }
 });
 
-export const {} = cardSlice.actions
+export const {setCurrentCard} = cardSlice.actions
 export const selectCards = state => state.cards.cardsData
+export const selectCurrentCard = state => state.cards.currentCard
 export default cardSlice.reducer

@@ -2,11 +2,12 @@ export const fetchThunkApi = async (route, options, rejectWithValue)=>{
     try {
         const res = await fetch(route, options)
         const result = await res.json()
-        if(res.status===200){
+        console.log({res})
+        if(res.ok){
             return result;
         }else{
             console.log("api",result);
-            if(result.errors){
+            if(result?.errors){
                 return rejectWithValue(result?.errors[0]?.msg) || result
             }
             return rejectWithValue(result?.message || "process failed") || result?.message
