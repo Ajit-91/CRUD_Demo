@@ -30,7 +30,7 @@ const cardSlice = createSlice({
 
         // createCard
         [createCard.fulfilled]: (state, {payload}) => {
-            state.cardsData = {...state.cardsData, ...payload};
+            state.cardsData = [...state.cardsData, payload];
         },
         [createCard.rejected]: (_, {payload}) => {
             console.log("rejected",payload);
@@ -38,7 +38,8 @@ const cardSlice = createSlice({
 
         // updateCard
         [updateCard.fulfilled]: (state, {payload}) => {
-            state.cardsData = payload;
+            const index = state.cardsData.findIndex(card => card.id === payload.id)
+            state.cardsData[index] = payload
         },
         [updateCard.rejected]: (_, {payload}) => {
             console.log("rejected",payload);

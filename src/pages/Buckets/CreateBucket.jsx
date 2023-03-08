@@ -52,7 +52,7 @@ const CreateBucket = ({ open, setOpen, edit, setEdit }) => {
             open={open || edit}
             setOpen={setOpen}
             handleClose={handleClose}
-            title='Create Card'
+            title={edit ? 'Edit Bucket' : 'Create Bucket'}
             submitHandler={submitHandler}
         >
             {loading && <Loading />}

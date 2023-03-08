@@ -27,7 +27,7 @@ const Bucket = ({ name, id, setEdit }) => {
                     </IconButton>
                 </Box>
 
-                <Box sx={{display : 'flex', justifyContent : 'center', alignItems : 'center', py : 4}}
+                <Box sx={{display : 'flex', justifyContent : 'center', alignItems : 'center', py : 4, cursor : 'pointer'}}
                     onClick={() => navigate(`/buckets/${id}`)}
                 >
                     <Typography align='center' variant="h5">{name?.toUpperCase()}</Typography>
