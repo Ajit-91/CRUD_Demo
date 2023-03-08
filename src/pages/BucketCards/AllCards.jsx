@@ -12,6 +12,7 @@ const AllCards = () => {
   const [loading, setLoading] = useState(true);
   const [openModal, setOpenModal] = useState(false)
   const [edit, setEdit] = useState(false)
+  const [refetch, setRefetch] = useState(false)
 
   const dispatch = useDispatch();
   const params = useParams();
@@ -25,18 +26,27 @@ const AllCards = () => {
       setAllCardData(data)
       setLoading(false)
     })()
-  }, [dispatch])
+  }, [dispatch, refetch])
 
-  useEffect(() => {
-    if(!cardsInfo) return;
-    setAllCardData(cardsInfo)
-  }, [cardsInfo])
+  // useEffect(() => {
+  //   if(!cardsInfo) return;
+  //   setAllCardData(cardsInfo)
+  // }, [cardsInfo])
 
   return (
     <>
       {loading ? <Typography align='center' variant='h4'>Loading...</Typography> : (
         <>
-          {(openModal || edit) && <CreateCard bucketId={params?.id} edit={edit} setEdit={setEdit} open={openModal} setOpen={setOpenModal} />}
+          {(openModal || edit) && (
+            <CreateCard 
+              bucketId={params?.id} 
+              edit={edit} 
+              setEdit={setEdit} 
+              open={openModal} 
+              setOpen={setOpenModal} 
+              setRefetch={setRefetch}
+            />
+          )}
           <Typography align='center' variant='h5'>All Cards</Typography>
           
           <Button variant='contained' sx={{my : 3}} onClick={()=>setOpenModal(true)}>Create Card</Button>
