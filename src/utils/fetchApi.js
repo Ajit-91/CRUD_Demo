@@ -8,9 +8,9 @@ export const fetchThunkApi = async (route, options, rejectWithValue)=>{
         }else{
             console.log("api",result);
             if(result?.errors){
-                return rejectWithValue(result?.errors[0]?.msg) || result
+                throw new Error(result?.errors[0]?.msg)
             }
-            return rejectWithValue(result?.message || "process failed") || result?.message
+            throw new Error(result?.message || "process failed")
         }
     } catch (err) {
         console.log("error",err)

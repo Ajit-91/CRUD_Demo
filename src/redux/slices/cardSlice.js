@@ -2,9 +2,9 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import * as cardApi from "../../APIs/cardApi"
 
 export const getAllCards = createAsyncThunk("cards/getAllCards", cardApi.getAllCards)
-export const createCard = createAsyncThunk("cards/getAllCards", cardApi.createCard)
-export const updateCard = createAsyncThunk("cards/getAllCards", cardApi.updateCard)
-export const deleteCard = createAsyncThunk("cards/getAllCards", cardApi.deleteCard)
+export const createCard = createAsyncThunk("cards/createCard", cardApi.createCard)
+export const updateCard = createAsyncThunk("cards/updateCard", cardApi.updateCard)
+export const deleteCard = createAsyncThunk("cards/deleteCard", cardApi.deleteCard)
 
 const initialState = {
     cardsData : null,

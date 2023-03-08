@@ -12,19 +12,12 @@ const Buckets = () => {
   const [loading, setLoading] = useState(true)
   const [openModal, setOpenModal] = useState(false)
   const dispatch = useDispatch()
-  const [refetch, setRefetch] = useState(true)
   const [edit, setEdit] = useState(false)
 
-  console.log({ info })
+  console.log({ edit })
 
   useEffect(() => {
     (async () => {
-      // if data is already in redux store, then no need to fetch again
-      // if(info && !refetch){
-      //   setBucketsData(info)
-      //   setLoading(false)
-      //   return
-      // }
       try {
         const data = await dispatch(getAllBuckets()).unwrap();
         console.log({ data })
@@ -36,13 +29,21 @@ const Buckets = () => {
       }
 
     })()
-  }, [dispatch, refetch])
+  }, [dispatch])
+
+  // // render the component when info is changed
+  useEffect(() => {
+    if(!info) return
+    console.log("info changed")
+    setBucketsData(info)
+  }, [info])
+
 
   return (
     <>
       {loading ? <Loading /> : (
         <>
-          {(openModal || edit) && <CreateBucket edit={edit} open={openModal} setOpen={setOpenModal} setRefetch={setRefetch}/>}
+          {(openModal || edit) && <CreateBucket edit={edit} setEdit={setEdit} open={openModal} setOpen={setOpenModal} />}
           <Typography align='center' variant='h5'>Buckets</Typography>
           <Button variant='contained' sx={{my : 3}} onClick={()=>setOpenModal(true)}>Create Bucket</Button>
           <Grid container spacing={2}>
