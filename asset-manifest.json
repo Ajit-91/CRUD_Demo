@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Resource-Bank/static/css/main.54435567.css",
-    "main.js": "/Resource-Bank/static/js/main.3952779c.js",
+    "main.js": "/Resource-Bank/static/js/main.b19e21b7.js",
     "static/js/787.47cd3662.chunk.js": "/Resource-Bank/static/js/787.47cd3662.chunk.js",
     "index.html": "/Resource-Bank/index.html",
     "main.54435567.css.map": "/Resource-Bank/static/css/main.54435567.css.map",
-    "main.3952779c.js.map": "/Resource-Bank/static/js/main.3952779c.js.map",
+    "main.b19e21b7.js.map": "/Resource-Bank/static/js/main.b19e21b7.js.map",
     "787.47cd3662.chunk.js.map": "/Resource-Bank/static/js/787.47cd3662.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.54435567.css",
-    "static/js/main.3952779c.js"
+    "static/js/main.b19e21b7.js"
   ]
 }
