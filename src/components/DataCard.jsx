@@ -6,13 +6,22 @@ import { setCurrentCard } from '../redux/slices/cardSlice';
 import MediaPlayer from './MediaPlayer';
 import { addHistory } from '../APIs/historyApi';
 
-const DataCard = ({cardInfo, setEdit}) => {
+const DataCard = ({cardInfo, setEdit, setCardsToDelete}) => {
     const dispatch = useDispatch()
     const [open, setOpen] = useState(false)
 
     const handleEdit = () => {
         setEdit(true)
         dispatch(setCurrentCard(cardInfo))
+    }
+
+    const handleCheck = (e) => {
+        console.log({checked : e.target.checked})
+        if(e.target.checked) {
+            setCardsToDelete(prev => [...prev, cardInfo?.id])
+        } else {
+            setCardsToDelete(prev => prev.filter(item => item !== cardInfo.id))
+        }
     }
 
     const handleOpen = async () => {
@@ -40,7 +49,7 @@ const DataCard = ({cardInfo, setEdit}) => {
             justifyContent: 'space-between',
             alignItems: 'center'
         }} >
-            <Checkbox />
+            <Checkbox onChange={handleCheck} />
             <IconButton onClick={handleEdit} >
                 <EditIcon />
             </IconButton>

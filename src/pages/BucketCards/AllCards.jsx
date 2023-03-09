@@ -1,10 +1,14 @@
-import { Button, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import DataCard from '../../components/DataCard';
 import { getAllCards, selectCards } from '../../redux/slices/cardSlice'
 import CreateCard from './CreateCard';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import Loading from '../../components/Loading';
+import { deleteMultipleCards } from '../../APIs/cardApi';
 
 const AllCards = () => {
 
@@ -13,6 +17,8 @@ const AllCards = () => {
   const [openModal, setOpenModal] = useState(false)
   const [edit, setEdit] = useState(false)
   const [refetch, setRefetch] = useState(false)
+  const [cardsToDelete, setCardsToDelete] = useState([])
+  const [loadAgain, setLoadAgain] = useState(false)
 
   const dispatch = useDispatch();
   const params = useParams();
@@ -28,15 +34,31 @@ const AllCards = () => {
     })()
   }, [dispatch, refetch])
 
+  const handleDelete = async () => {
+    try {
+      setLoadAgain(true)
+      const data = await deleteMultipleCards(cardsToDelete)
+      console.log({Deletedata : data})
+    } catch (error) {
+      console.log({deleteError : error})
+    } finally {
+      setLoadAgain(false)
+      setCardsToDelete([])
+      setRefetch(prev => !prev)
+    }
+  }
+
   // useEffect(() => {
   //   if(!cardsInfo) return;
   //   setAllCardData(cardsInfo)
   // }, [cardsInfo])
+  console.log({cardsToDelete})
 
   return (
     <>
-      {loading ? <Typography align='center' variant='h4'>Loading...</Typography> : (
+      {loading ? <Loading /> : (
         <>
+        {loadAgain && <Loading />}
           {(openModal || edit) && (
             <CreateCard 
               bucketId={params?.id} 
@@ -48,13 +70,35 @@ const AllCards = () => {
             />
           )}
           <Typography align='center' variant='h5'>All Cards</Typography>
-          
-          <Button variant='contained' sx={{my : 3}} onClick={()=>setOpenModal(true)}>Create Card</Button>
+         
+            <Box 
+              sx={{
+                visibility : `${cardsToDelete.length > 0 ? 'visible' : 'hidden'}`, 
+                display : 'flex',
+                justifyContent : 'space-between', 
+                alignItems : 'center', 
+                py : 2,
+              }}
+            >
+              <Typography align='center' variant='h6'>{cardsToDelete.length} Cards Selected</Typography>
+              <Button 
+                variant='contained'
+                onClick={handleDelete}
+              >Delete <DeleteIcon sx={{ml : 1}}/>
+              </Button>
+            </Box>
+
+          <Button 
+            variant='contained' 
+            sx={{my : 3}} 
+            onClick={()=>setOpenModal(true)}
+          >Create Card <AddCircleOutlineIcon sx={{ml : 1}} />
+        </Button>
           <Grid container spacing={2}>
             {
               allCardData && allCardData.map((item, index) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={index} >
-                  <DataCard cardInfo={item} setEdit={setEdit} />
+                  <DataCard cardInfo={item} setEdit={setEdit} setCardsToDelete={setCardsToDelete} />
                 </Grid>
               ))
             }

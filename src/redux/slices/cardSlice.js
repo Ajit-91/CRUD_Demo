@@ -4,7 +4,7 @@ import * as cardApi from "../../APIs/cardApi"
 export const getAllCards = createAsyncThunk("cards/getAllCards", cardApi.getAllCards)
 export const createCard = createAsyncThunk("cards/createCard", cardApi.createCard)
 export const updateCard = createAsyncThunk("cards/updateCard", cardApi.updateCard)
-export const deleteCard = createAsyncThunk("cards/deleteCard", cardApi.deleteCard)
+// export const deleteCard = createAsyncThunk("cards/deleteCard", cardApi.deleteCard)
 
 const initialState = {
     cardsData : null,
@@ -46,12 +46,12 @@ const cardSlice = createSlice({
         },
 
         // deleteCard
-        [deleteCard.fulfilled]: (state, {payload}) => {
-            state.cardsData = payload;
-        },
-        [deleteCard.rejected]: (_, {payload}) => {
-            console.log("rejected",payload);
-        }
+        // [deleteCard.fulfilled]: (state, {payload}) => {
+        //     state.cardsData = payload;
+        // },
+        // [deleteCard.rejected]: (_, {payload}) => {
+        //     console.log("rejected",payload);
+        // }
 
     }
 });
