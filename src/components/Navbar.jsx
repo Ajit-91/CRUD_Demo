@@ -39,7 +39,7 @@ const Navbar = (props) => {
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
             <Typography variant="h6" sx={{ my: 2 }}>
-                MUI
+                Resource Bank
             </Typography>
             <Divider />
             <List>
@@ -75,7 +75,7 @@ const Navbar = (props) => {
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                     >
-                        MUI
+                        Resource Bank
                     </Typography>
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                         {navItems.map(({name, path}, index) => (
