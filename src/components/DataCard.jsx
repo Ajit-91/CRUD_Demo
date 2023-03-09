@@ -55,7 +55,7 @@ const DataCard = ({cardInfo, setEdit, setCardsToDelete}) => {
             </IconButton>
         </Box>
 
-        <Box sx={{display : 'flex', justifyContent : 'center', alignItems : 'center', flexDirection : 'column', py : 4}}>
+        <Box sx={{display : 'flex', justifyContent : 'center', alignItems : 'center', flexDirection : 'column', py : 4, px : 2}}>
             <Typography align='center' variant="h5">{cardInfo?.name?.toUpperCase()}</Typography>
             <Button mt={3} onClick={handleOpen} >Open</Button>
         </Box>

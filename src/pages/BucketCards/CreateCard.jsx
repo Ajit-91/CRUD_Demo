@@ -32,11 +32,11 @@ const CreateCard = ({ open, setOpen, edit, setEdit, bucketId, setRefetch }) => {
                 return navigate('/buckets');
             } 
 
-            setName(editInfo.name)
-            setLink(editInfo.link)
-            setNewBucketId(editInfo.bucketId)
+            setName(editInfo?.name)
+            setLink(editInfo?.link)
+            setNewBucketId(editInfo?.bucketId)
         }
-    }, [edit, editInfo])
+    }, [edit, editInfo, buckets, navigate])
 
 
 

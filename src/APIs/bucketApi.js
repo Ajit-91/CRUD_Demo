@@ -35,11 +35,11 @@ export const updateBucket = async (bucket, {rejectWithValue}) => {
     return fetchThunkApi(route, options, rejectWithValue);
 }
 
-export const deleteBucket = async (bucketId, {rejectWithValue}) => {
-    const route = process.env.REACT_APP_BASE_URL + "/buckets/" + bucketId;
-    const options = {
-        method: "DELETE",
-    };
+// export const deleteBucket = async (bucketId, {rejectWithValue}) => {
+//     const route = process.env.REACT_APP_BASE_URL + "/buckets/" + bucketId;
+//     const options = {
+//         method: "DELETE",
+//     };
     
-    return fetchThunkApi(route, options, rejectWithValue);
-}
+//     return fetchThunkApi(route, options, rejectWithValue);
+// }

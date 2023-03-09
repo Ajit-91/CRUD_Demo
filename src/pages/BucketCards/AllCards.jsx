@@ -1,9 +1,9 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import DataCard from '../../components/DataCard';
-import { getAllCards, selectCards } from '../../redux/slices/cardSlice'
+import { getAllCards } from '../../redux/slices/cardSlice'
 import CreateCard from './CreateCard';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -22,7 +22,6 @@ const AllCards = () => {
 
   const dispatch = useDispatch();
   const params = useParams();
-  const cardsInfo = useSelector(selectCards)
 
   console.log({ allCardData, params })
   useEffect(() => {
@@ -32,7 +31,7 @@ const AllCards = () => {
       setAllCardData(data)
       setLoading(false)
     })()
-  }, [dispatch, refetch])
+  }, [dispatch, refetch, params?.id])
 
   const handleDelete = async () => {
     try {
@@ -47,12 +46,6 @@ const AllCards = () => {
       setRefetch(prev => !prev)
     }
   }
-
-  // useEffect(() => {
-  //   if(!cardsInfo) return;
-  //   setAllCardData(cardsInfo)
-  // }, [cardsInfo])
-  console.log({cardsToDelete})
 
   return (
     <>

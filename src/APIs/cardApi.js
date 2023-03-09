@@ -46,7 +46,6 @@ export const deleteCard = async (cardId) => {
 }
 
 export const deleteMultipleCards = async (cardIds) => {
-    // use deleteCard function and Promis.all to delete multiple cards
     const promises = cardIds.map((cardId) => deleteCard(cardId));
     return Promise.all(promises);
 }

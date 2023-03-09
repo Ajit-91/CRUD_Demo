@@ -13,9 +13,9 @@ const CreateBucket = ({ open, setOpen, edit, setEdit }) => {
 
     useEffect(() => {
         if (edit) {
-            setName(editInfo.name)
+            setName(editInfo?.name)
         }
-    }, [edit])
+    }, [edit, editInfo])
 
     
     const handleClose = () => {

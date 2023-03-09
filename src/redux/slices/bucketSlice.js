@@ -4,7 +4,7 @@ import * as bucketApi from "../../APIs/bucketApi"
 export const getAllBuckets = createAsyncThunk("buckets/getAllBuckets", bucketApi.getAllBuckets)
 export const createBucket = createAsyncThunk("buckets/createBucket", bucketApi.createBucket)
 export const updateBucket = createAsyncThunk("buckets/updateBucket", bucketApi.updateBucket)
-export const deleteBucket = createAsyncThunk("buckets/deleteBucket", bucketApi.deleteBucket)
+// export const deleteBucket = createAsyncThunk("buckets/deleteBucket", bucketApi.deleteBucket)
 
 const initialState = {
     bucketsData: null,
@@ -52,13 +52,13 @@ const bucketSlice = createSlice({
         },
 
         // deleteBucket
-        [deleteBucket.fulfilled]: (state, { payload }) => {
-            state.bucketsData = payload;
-        },
+        // [deleteBucket.fulfilled]: (state, { payload }) => {
+        //     state.bucketsData = payload;
+        // },
 
-        [deleteBucket.rejected]: (_, { payload }) => {
-            console.log("rejected", payload);
-        },
+        // [deleteBucket.rejected]: (_, { payload }) => {
+        //     console.log("rejected", payload);
+        // },
     }
 });
 

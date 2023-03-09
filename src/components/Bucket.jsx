@@ -1,4 +1,4 @@
-import { Box, Checkbox, Divider, IconButton, Paper, Typography } from '@mui/material'
+import { Box, IconButton, Paper, Typography } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
@@ -18,10 +18,9 @@ const Bucket = ({ name, id, setEdit }) => {
             <Paper elevation={3}>
                 <Box sx={{
                     display: 'flex',
-                    justifyContent: 'space-between',
+                    justifyContent: 'flex-end',
                     alignItems: 'center'
                 }} >
-                    <Checkbox />
                     <IconButton onClick={handleEdit}>
                         <EditIcon />
                     </IconButton>

@@ -5,6 +5,8 @@ import Bucket from '../../components/Bucket'
 import Loading from '../../components/Loading'
 import { getAllBuckets, selectBuckets } from '../../redux/slices/bucketSlice'
 import CreateBucket from './CreateBucket'
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+
 
 const Buckets = () => {
   const info = useSelector(selectBuckets)
@@ -45,7 +47,12 @@ const Buckets = () => {
         <>
           {(openModal || edit) && <CreateBucket edit={edit} setEdit={setEdit} open={openModal} setOpen={setOpenModal} />}
           <Typography align='center' variant='h5'>Buckets</Typography>
-          <Button variant='contained' sx={{my : 3}} onClick={()=>setOpenModal(true)}>Create Bucket</Button>
+          <Button 
+            variant='contained' 
+            sx={{my : 3}} 
+            onClick={()=>setOpenModal(true)}
+          >Create Bucket <AddCircleOutlineIcon sx={{ml : 1}} />
+          </Button>
           <Grid container spacing={2}>
             {
               bucketsData && bucketsData.map((item, index) => (
